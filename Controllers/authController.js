@@ -1,7 +1,7 @@
 const User = require('../Models/userModel')
 const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcryptjs');
-
+const generateWebToken = require('../utility/generateWebToken')
 
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -28,6 +28,7 @@ const registerUser = asyncHandler(async (req, res) => {
             email: user.email,
             name: user.name,
             isAdmin: user.isAdmin,
+            token: generateWebToken(user.id),
         })
     } else {
         res.status(400)
@@ -50,6 +51,7 @@ const userAuth = asyncHandler(async (req, res) => {
                 email: user.email,
                 name: user.name,
                 isAdmin: user.isAdmin,
+                token: generateWebToken(user.id),
             })
         } else {
             return res.json('Invalid password')
