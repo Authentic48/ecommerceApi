@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const colors = require('colors')
 const connectDB = require('./config/db')
 const authRoute = require('./Routes/authRoute')
+const { errorHandler, notFound } = require('./Middlewares/errorMiddleware')
 
 // DB Connection 
 connectDB()
@@ -19,6 +20,12 @@ app.use(express.json())
 
 //Routes
 app.use('/api/users', authRoute)
+
+
+// Error Middlewares
+app.use(errorHandler)
+app.use(notFound)
+
 
 const PORT = process.env.PORT || 5000 
 
