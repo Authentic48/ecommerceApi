@@ -17,7 +17,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10)
 
     const user = await User.create({
-        name, 
+        name,
         email,
         password: hashedPassword
     })
@@ -36,4 +36,26 @@ const registerUser = asyncHandler(async (req, res) => {
 
 })
 
-module.exports = { registerUser }
+const userAuth = asyncHandler(async (req, res) => {
+
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email })
+    if (user) {
+        const validPassword = await bcrypt.compare(password, user.password)
+
+        if (validPassword) {
+            return res.json({
+                id: user.id,
+                email: user.email,
+                name: user.name,
+                isAdmin: user.isAdmin,
+            })
+        } else {
+            return res.json('Invalid password')
+        }
+    }
+
+})
+
+module.exports = { registerUser, userAuth }
