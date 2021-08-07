@@ -63,6 +63,8 @@ const userAuth = asyncHandler(async (req, res) => {
         } else {
             return res.json('Invalid password')
         }
+    }else{
+        return res.status(201).json('Incorrect credentials....')
     }
 
 })

@@ -16,7 +16,6 @@ const getAllProducts = asyncHandler(async (req, res) => {
 const createProduct = asyncHandler(async (req, res) => {
 
     const { name, image, description, brand, category, price, countInStock } = req.body;
-
     const product = await Product.create({
         name,
         image,
@@ -79,8 +78,7 @@ const getProductById = asyncHandler(async (req, res) => {
 // @Access  Private / Seller / Admin
 const removeProduct = asyncHandler(async (req, res) => {
 
-    const product = await Product.findById(req.params.id)
-
+    const product = await Product.findById(req.params.id) 
     if (product) {
         await product.remove()
         res.json({ message: "product has Been deleted" })
