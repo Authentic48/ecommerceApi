@@ -4,7 +4,10 @@ const morgan = require('morgan')
 const colors = require('colors')
 const connectDB = require('./config/db')
 const authRoute = require('./Routes/authRoute')
+const productRoute = require('./Routes/productRoute')
+
 const { errorHandler, notFound } = require('./Middlewares/errorMiddleware')
+
 
 // DB Connection 
 connectDB()
@@ -20,6 +23,7 @@ app.use(express.json())
 
 //Routes
 app.use('/api/users', authRoute)
+app.use('/api/products', productRoute)
 
 
 // Error Middlewares

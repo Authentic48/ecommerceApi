@@ -4,8 +4,11 @@ const mongoose = require('mongoose')
 const asyncHandler = require('express-async-handler')
 const dotenv = require('dotenv')
 const colors = require('colors')
-const connectDB = require('./config/db.js')
+const products = require('./data/product')
+const Product = require('./Models/productModel')
 
+
+const connectDB = require('./config/db.js')
 dotenv.config()
 
 connectDB()
@@ -14,8 +17,16 @@ const importDataToDb = asyncHandler(async () => {
 
     try {
         await User.deleteMany();
+        await Product.deleteMany();
 
         const createdUser = await User.insertMany(users)
+
+        const seller = createdUser[1]._id;
+        const sampleProducts = products.map(product => {
+            return { ...product, user: seller }
+        })
+         await Product.insertMany(sampleProducts);
+
         console.log(`Data imported To db`.green.inverse)
         process.exit()
     } catch (error) {
