@@ -5,6 +5,7 @@ const colors = require('colors')
 const connectDB = require('./config/db')
 const authRoute = require('./Routes/authRoute')
 const productRoute = require('./Routes/productRoute')
+const orderRoute = require('./Routes/orderRoute')
 
 const { errorHandler, notFound } = require('./Middlewares/errorMiddleware')
 
@@ -24,6 +25,7 @@ app.use(express.json())
 //Routes
 app.use('/api/users', authRoute)
 app.use('/api/products', productRoute)
+app.use('/api/orders', orderRoute)
 
 
 // Error Middlewares

@@ -8,7 +8,7 @@ dotenv.config()
 const connectDB = async () => {
 
     try {
-        const connection = await mongoose.connect('mongodb://mongo:27017/ecommerceApi', {
+        const connection = await mongoose.connect(process.env.MONGO_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true
@@ -22,3 +22,5 @@ const connectDB = async () => {
 }
 
 module.exports = connectDB 
+
+// 'mongodb://mongo:27017/ecommerceApi'
