@@ -9,4 +9,4 @@ steps:
 images:
 - 'gcr.io/$PROJECT_ID/ecommerce:latest'
 - 'gcr.io/$PROJECT_ID/ecommerce:$COMMIT_SHA'
-- 'gcr.io/$PROJECT_ID/ecommerce:$BUILD_ID'
+- 'gcr.io/$PROJECT_ID/ecommerce:$BUILD_ID'  
