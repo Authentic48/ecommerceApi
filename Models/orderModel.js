@@ -1,68 +1,68 @@
 const mongoose = require('mongoose')
 
 const orderSchema = mongoose.Schema({
-    user:{
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'user',
     },
     orderItems: [
         {
-          name: { type: String, required: true },
-          qty: { type: Number, required: true },
-          image: { type: String, required: true },
-          price: { type: Number, required: true },
-          product: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            ref: 'Product',
-          },
+            name: { type: String, required: true },
+            qty: { type: Number, required: true },
+            image: { type: String, required: true },
+            price: { type: Number, required: true },
+            product: {
+                type: mongoose.Schema.Types.ObjectId,
+                required: true,
+                ref: 'Product',
+            },
         },
-      ],
-    shippingAddress:{
-        address:{type: String, required: true},
-        country:{type: String, required: true},
-        city:{type: String, required: true},
-        zipCode:{type: String, required: true},
+    ],
+    shippingAddress: {
+        address: { type: String, required: true },
+        country: { type: String, required: true },
+        city: { type: String, required: true },
+        zipCode: { type: String, required: true },
     },
-    paymentMethod:{
+    paymentMethod: {
         type: String,
         required: true,
     },
-    paymentResult:{
-      id: {type: String},
-      status: {type: String},
-      updated_time: {type: String},
-      email_address: {type: String},
+    paymentResult: {
+        id: { type: String },
+        status: { type: String },
+        updated_time: { type: String },
+        email_address: { type: String },
     },
-    taxPrice:{
+    taxPrice: {
         type: Number,
         required: true,
         default: 0.0
     },
-    shippingPrice:{
+    shippingPrice: {
         type: Number,
         required: true,
         default: 0.0
     },
-    totalPrice:{
+    totalPrice: {
         type: Number,
         required: true,
         default: 0.0
     },
-    isPaid:{
+    isPaid: {
         type: Boolean,
         required: true,
         default: false
     },
-    paidAt:{ type: Date},
-    isDelivered:{
+    paidAt: { type: Date },
+    isDelivered: {
         type: Boolean,
         required: true,
         default: false
     },
-    deliveredAt:{ type: Date},
-},{
+    deliveredAt: { type: Date },
+}, {
     timestamps: true
 })
 

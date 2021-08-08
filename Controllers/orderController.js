@@ -5,6 +5,7 @@ const Order = require('../Models/orderModel')
 
 // @desc Create Order Controller
 // @route api/orders/create
+// @Access  Private
 const createOrder = asyncHandler(async (req, res) => {
 
     const {
@@ -38,6 +39,10 @@ const createOrder = asyncHandler(async (req, res) => {
         res.status(201).json(createdOrder);
     }
 })
+
+// @desc Create Order Controller
+// @route api/orders/create
+// @Access  Private 
 
 
 module.exports = { createOrder }
