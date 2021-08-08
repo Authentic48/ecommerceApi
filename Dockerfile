@@ -7,9 +7,9 @@ COPY package*.json ./
 # Install production dependencies.
 RUN npm install --only=productio
 
-COPY . .
+COPY . ./
 
 EXPOSE 5000
 
-CMD ["npm", "start", "data:import"]
+CMD ["npm", "start"]
 
