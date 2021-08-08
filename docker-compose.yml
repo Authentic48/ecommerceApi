@@ -7,11 +7,13 @@ services:
     ports:
       - '80:5000'
     links: 
-      - mongo
-  mongo:
-    container_name: mongo
+      - mongodb
+  mongodb:
+    container_name: mongodb
     image: mongo
-    restart: always
     ports:
       - '27017:27017'
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=admin 
+      - MONGO_INITDB_ROOT_PASSWORD=password   
 
