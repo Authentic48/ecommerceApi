@@ -3,5 +3,10 @@ steps:
 - name: 'docker/compose:1.19.0'
   args: ['up', '-d']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/ecommerce/my-image', '.']
+  args: args: ['build', '-t', 'gcr.io/$PROJECT_ID/ecommerce:latest', '-t', 'gcr.io/$PROJECT_ID/ecommerce:$COMMIT_SHA', '-t', 'gcr.io/$PROJECT_ID/ecommerce:$BUILD_ID', '.']
+  id: 'build-image-ecommerce'
   timeout: 500s
+images:
+- 'gcr.io/$PROJECT_ID/ecommerce:latest'
+- 'gcr.io/$PROJECT_ID/ecommerce:$COMMIT_SHA'
+- 'gcr.io/$PROJECT_ID/ecommerce:$BUILD_ID'
