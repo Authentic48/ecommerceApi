@@ -5,11 +5,12 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install production dependencies.
-RUN npm install --only=productio
+RUN npm install --only=production 
 
 COPY . ./
 
 EXPOSE 5000
 
 CMD ["npm", "start"]
+
 
