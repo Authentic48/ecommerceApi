@@ -24,7 +24,7 @@ This is a full ecommerce_api built using nodeJs and deployed on Google Cloud. It
 # step 4
 
 ```bash 
-   create environments variables
+   create environments variables 
 ```
 
 # step 5
